@@ -16,3 +16,6 @@ rootProject.name = "World News"
 include ':app'
 include ':core:domain'
 include ':core:data'
+include ':feature:home'
+include ':feature:source'
+include ':feature:favorite'
