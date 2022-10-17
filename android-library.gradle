@@ -1,0 +1,79 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdk rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies{
+    //implementation project(":logging")
+    implementation "androidx.core:core-ktx:$coreKtx"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleLiveDataKtx"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleViewModelKtx"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationFragmentKtx"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationUIKtx"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    implementation "androidx.core:core-splashscreen:$splashVersion"
+    implementation "androidx.viewpager2:$viewPagerVersion"
+
+    // Kotlin
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+
+    // dot indicator
+    implementation "com.tbuonomo:dotsindicator:$dotIndicatorVersion"
+
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleLiveDataKtx"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleViewModelKtx"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationFragmentKtx"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationUIKtx"
+
+
+    //implementation "com.jakewharton.threetenabp:threetenabp:$threetenbpVersion"
+
+//    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
+
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+
+    testImplementation "junit:junit:$junitTest"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$junitAndroidTest"
+    androidTestImplementation "androidx.test:core-ktx:$androidXTestCore"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$expressoCoreAndroidTest"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion"
+
+}
+
+kapt {
+    correctErrorTypes true
+}
