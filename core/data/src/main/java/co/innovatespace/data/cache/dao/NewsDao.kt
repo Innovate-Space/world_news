@@ -10,3 +10,4 @@ interface NewsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(newsList: List<CacheNews>)
 }
+// added
