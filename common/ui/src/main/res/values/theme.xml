@@ -1,0 +1,34 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.WorldNews" parent="Theme.MaterialComponents.DayNight">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/blue</item>
+        <item name="colorPrimaryDark"> @android:color/transparent</item>
+        <item name="colorOnPrimary">@color/ash</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondaryVariant">@color/blue</item>
+        <item name="colorOnSecondary">@color/white_10</item>
+        <item name="android:statusBarColor" >@android:color/transparent</item>
+        <!-- SURFACE COLORS-->
+        <item name="colorOnSurface">@color/dark</item>
+
+        <item name="subtitleTextColor">@color/dark</item>
+
+        <!--Typography-->
+
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.WorldNews.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.WorldNews.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.WorldNews.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+</resources>
