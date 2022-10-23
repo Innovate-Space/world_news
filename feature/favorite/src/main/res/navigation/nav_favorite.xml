@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="co.innovatespace.favorite.FavoriteFragment"
-        android:label="fragment_favorite"
+        android:label="@string/favorites"
         tools:layout="@layout/fragment_favorite">
         <argument
             android:name="ShowSidebar"

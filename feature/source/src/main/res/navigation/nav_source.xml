@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/sourceFragment"
         android:name="co.innovatespace.source.SourceFragment"
-        android:label="fragment_source"
+        android:label="@string/sources"
         tools:layout="@layout/fragment_source">
         <argument
             android:name="ShowSidebar"

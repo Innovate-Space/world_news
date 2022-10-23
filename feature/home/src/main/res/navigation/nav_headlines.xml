@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/headlineFragment"
         android:name="co.innovatespace.home.HeadlineFragment"
-        android:label="fragment_headline"
+        android:label="@string/headlines"
         tools:layout="@layout/fragment_headline">
         <argument
             android:name="ShowSidebar"
