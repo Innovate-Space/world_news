@@ -41,7 +41,7 @@ dependencies {
 
     implementation project(":core:data")
     implementation project(":core:domain")
-    //implementation project("")
+    implementation project(":common:ui")
 
     implementation "androidx.core:core-ktx:$coreKtx"
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
