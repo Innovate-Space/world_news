@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_headlines"
+    app:startDestination="@id/headlineFragment">
+
+    <fragment
+        android:id="@+id/headlineFragment"
+        android:name="co.innovatespace.home.HeadlineFragment"
+        android:label="fragment_headline"
+        tools:layout="@layout/fragment_headline">
+        <argument
+            android:name="ShowSidebar"
+            android:defaultValue="true" />
+        <argument
+            android:name="ShowBottomNav"
+            android:defaultValue="true" />
+        <deepLink app:uri="app://innovatespace.co/headline" />
+    </fragment>
+</navigation>

@@ -10,4 +10,10 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="sources">Sources</string>
+    <string name="favorites">Favorites</string>
+    <string name="headlines">Headlines</string>
+    <string name="filter">Filter</string>
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
 </resources>

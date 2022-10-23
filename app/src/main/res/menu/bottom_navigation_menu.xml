@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="bottom_view"
+    >
+    <item
+        android:id="@+id/nav_headlines"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_headline_24"
+        android:title="@string/headlines"/>
+    <item
+        android:id="@+id/nav_source"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_sources_24"
+        android:title="@string/sources"/>
+
+    <item
+        android:id="@+id/nav_favorite"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="@string/favorites"/>
+</menu>
