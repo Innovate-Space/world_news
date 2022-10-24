@@ -1,6 +1,6 @@
 package co.innovatespace.data.api.interceptor
 
-import co.innovatespace.data.api.ApiConstants
+import co.innovatespace.data.BuildConfig
 import co.innovatespace.data.api.ApiParameters
 import okhttp3.Interceptor
 import okhttp3.Request
@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class AuthenticationInterceptor @Inject constructor(): Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        val request = chain.createAuthenticationRequest(ApiConstants.API_KEY)
+        val request = chain.createAuthenticationRequest(BuildConfig.API_KEY)
         return chain.proceed(request)
     }
 
