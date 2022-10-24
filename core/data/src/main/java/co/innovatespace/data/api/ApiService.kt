@@ -6,12 +6,12 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET(value = ApiConstants.HEADLINE_ENPOINT)
+    @GET(value = ApiConstants.HEADLINE_ENDPOINT)
     suspend fun getNewsHeadLines(
-        @Query(ApiParameters.PAGE_SIZE) pageSize: Int,
-        @Query(ApiParameters.PAGE) page: Int,
-        @Query(ApiParameters.LANGUAGE) language: String ="en",
-        @Query(ApiParameters.SORT_BY) sortBy: String?,
+        @Query(ApiParameters.PAGE) page: Int = 0,
+        @Query(ApiParameters.LANGUAGE) language: String ="ng",
+        @Query(ApiParameters.CATEGORY) category: String? = null,
+        @Query(ApiParameters.PAGE_QUERY) query: String? = null,
     ): ApiNewsWrapper
 
     @GET(value = ApiConstants.SOURCE_ENDPOINT)
