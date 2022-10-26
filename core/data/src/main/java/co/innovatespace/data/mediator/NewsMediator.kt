@@ -5,15 +5,17 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import co.innovatespace.data.api.ApiService
+import co.innovatespace.data.cache.Cache
 import co.innovatespace.data.cache.dao.NewsDao
+import co.innovatespace.data.cache.model.CacheNews
+import co.innovatespace.domain.model.NewsInt
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class NewsMediator @Inject constructor(val apiService: ApiService, newsDao: NewsDao) {
-    @OptIn(ExperimentalPagingApi::class)
-    inner class Mediator: RemoteMediator<Int, Any>() {
-        override suspend fun load(loadType: LoadType, state: PagingState<Int, Any>): MediatorResult {
+@OptIn(ExperimentalPagingApi::class)
+class NewsMediator  constructor(val apiService: ApiService, cache: Cache , query: String?, country: String = "ng", category: String? ): RemoteMediator<Int, NewsInt>()  {
+
+        override suspend fun load(loadType: LoadType, state: PagingState<Int, NewsInt>): MediatorResult {
             TODO("Not yet implemented")
         }
 
@@ -32,6 +34,4 @@ class NewsMediator @Inject constructor(val apiService: ApiService, newsDao: News
 //            }
             return super.initialize()
         }
-
-    }
 }
