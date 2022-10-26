@@ -48,6 +48,7 @@ buildscript {
         roomVersion = "2.4.3"
         roomPagingVersion = "2.4.3"
         coroutinesVersion = "1.6.4"
+        paging_version = "3.1.1"
 
     }
 }

@@ -59,6 +59,7 @@ dependencies {
     implementation "com.google.code.gson:gson:$gsonVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
     implementation "androidx.datastore:datastore-preferences:$dataStore"
+    implementation "androidx.paging:paging-runtime:$paging_version"
 
     //JWT
     implementation "com.auth0.android:jwtdecode:$jwtVersion"
