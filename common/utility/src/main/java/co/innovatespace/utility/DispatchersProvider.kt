@@ -1,4 +1,4 @@
-package co.innovatespace.data.dispatchers
+package co.innovatespace.utility
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

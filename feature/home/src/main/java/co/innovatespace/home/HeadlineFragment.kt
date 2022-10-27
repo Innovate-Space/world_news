@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import co.innovatespace.home.databinding.FragmentHeadlineBinding
+import co.innovatespace.ui.NewsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -15,7 +18,7 @@ class HeadlineFragment : Fragment() {
     private var _binding: FragmentHeadlineBinding? = null
 
 
-    private lateinit var viewModel: HeadlineViewModel
+    private val viewModel: HeadlineViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +30,25 @@ class HeadlineFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupUI()
+    }
 
+    private fun setupUI() {
+        val adapter = NewsAdapter()
+        setupRecyclerView(adapter)
+        observeViewStateUpdates(adapter)
+    }
+
+    private fun setupRecyclerView(newsAdapter: NewsAdapter) {
+        binding.recyclerNewsList.apply {
+            adapter = newsAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+        }
+    }
+
+    private fun observeViewStateUpdates(adapter: NewsAdapter) {
+        viewModel
     }
 
 

@@ -3,3 +3,9 @@ apply from: "$rootProject.projectDir/android-library.gradle"
 android {
     namespace 'co.innovatespace.favorite'
 }
+
+dependencies {
+    implementation project(":common:ui")
+    implementation project(":common:utility")
+    implementation project(":core:domain")
+}

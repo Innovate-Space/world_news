@@ -50,6 +50,7 @@ android {
 
 dependencies {
     implementation project(":core:domain")
+    implementation project(":common:utility")
 
     // Network
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"

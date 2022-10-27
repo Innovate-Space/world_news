@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 class NewsRepository @Inject constructor(private val apiService: ApiService, private val cache: Cache ): NewsRepo {
     @OptIn(ExperimentalPagingApi::class)
-    override suspend fun getNews(country: String, q: String?, category: List<String>?): Pager<Int, NewsInt> {
+    override fun getNews(country: String, q: String?, category: List<String>?): Pager<Int, NewsInt> {
         return Pager(
             config = PagingConfig(pageSize = 50),
             remoteMediator = NewsMediator(cache = cache, apiService = apiService, query = q, country = country, category = category?.joinToString( ",")   )
@@ -22,7 +22,7 @@ class NewsRepository @Inject constructor(private val apiService: ApiService, pri
         }
     }
 
-    override suspend fun getFavoriteNews(): Pager<Int, NewsInt> {
+    override fun getFavoriteNews(): Pager<Int, NewsInt> {
         TODO("Not yet implemented")
     }
 }
