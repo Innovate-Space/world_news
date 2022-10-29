@@ -8,9 +8,9 @@ object ApiConstants {
 
 object ApiParameters{
     const val TOKEN_TYPE = "Bearer "
-    const val AUTH_HEADER = "Authorization"
+    const val AUTH_HEADER = "X-ACCESS-KEY"
     const val PAGE = "page"
-    const val LANGUAGE = "language"
+    const val COUNTRY = "country"
     const val PAGE_QUERY = "q"
     const val CATEGORY = "category"
 }

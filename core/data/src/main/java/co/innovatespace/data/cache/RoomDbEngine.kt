@@ -8,10 +8,11 @@ import co.innovatespace.data.cache.dao.NewsDao
 import co.innovatespace.data.cache.dao.SourceDao
 import co.innovatespace.data.cache.model.CacheCategory
 import co.innovatespace.data.cache.model.CacheNews
+import co.innovatespace.data.cache.model.CacheRemoteKeys
 import co.innovatespace.data.cache.model.CacheSource
 
 @Database(
-    entities = [CacheNews::class, CacheCategory::class, CacheSource::class ],
+    entities = [CacheNews::class, CacheCategory::class, CacheSource::class, CacheRemoteKeys::class ],
     version = 1
 )
 abstract class RoomDbEngine: RoomDatabase() {

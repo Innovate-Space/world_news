@@ -11,6 +11,8 @@ import javax.inject.Inject
  */
 class LoggingInterceptor @Inject constructor() : HttpLoggingInterceptor.Logger{
     override fun log(message: String) {
-        TODO("Not yet implemented")
+        println("-------x-------")
+       println(message)
+        println("-------p-------")
     }
 }

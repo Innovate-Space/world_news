@@ -6,10 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.innovatespace.home.databinding.FragmentHeadlineBinding
 import co.innovatespace.ui.NewsAdapter
+import co.innovatespace.utility.Event
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HeadlineFragment : Fragment() {
@@ -44,11 +49,27 @@ class HeadlineFragment : Fragment() {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
+
         }
     }
 
     private fun observeViewStateUpdates(adapter: NewsAdapter) {
-        viewModel
+        viewLifecycleOwner.lifecycleScope.launch{
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.pagingDataFlow.collect{
+                    adapter.submitData(it)
+                }
+            }
+
+        }
+    }
+
+    private fun updateScreenState(state: HeadlineViewState) {
+
+    }
+
+    private fun handleFailure(failure: Event<Throwable>?) {
+
     }
 
 

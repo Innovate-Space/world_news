@@ -14,6 +14,6 @@ class AuthenticationInterceptor @Inject constructor(): Interceptor {
     }
 
     private fun Interceptor.Chain.createAuthenticationRequest(token: String) : Request {
-        return request().newBuilder().addHeader(ApiParameters.AUTH_HEADER, ApiParameters.TOKEN_TYPE + token).build()
+        return request().newBuilder().addHeader(ApiParameters.AUTH_HEADER,  token).build()
     }
 }
