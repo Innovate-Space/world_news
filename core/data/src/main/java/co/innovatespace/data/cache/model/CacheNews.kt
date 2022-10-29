@@ -11,4 +11,8 @@ data class CacheNews(
     override val title: String,
     override val description: String,
     override val content: String,
+    override val  link: String,
+    override val imageUrl: String,
+    override val pubDate : String,
+    override  val category : String
 ): NewsInt

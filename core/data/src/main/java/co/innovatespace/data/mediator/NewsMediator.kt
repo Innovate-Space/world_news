@@ -5,18 +5,42 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import co.innovatespace.data.api.ApiService
+import co.innovatespace.data.api.model.mapper.NewsMapper
 import co.innovatespace.data.cache.Cache
 import co.innovatespace.data.cache.dao.NewsDao
 import co.innovatespace.data.cache.model.CacheNews
 import co.innovatespace.domain.model.NewsInt
+import retrofit2.HttpException
+import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 
+private const val NEWS_DATA_STARTING_PAGE_INDEX = 0;
+
 @OptIn(ExperimentalPagingApi::class)
-class NewsMediator  constructor(val apiService: ApiService, cache: Cache , query: String?, country: String = "ng", category: String? ): RemoteMediator<Int, NewsInt>()  {
+class NewsMediator  constructor(val apiService: ApiService,val cache: Cache , val query: String?, val country: String = "ng", val category: String? ): RemoteMediator<Int, NewsInt>()  {
 
         override suspend fun load(loadType: LoadType, state: PagingState<Int, NewsInt>): MediatorResult {
-            TODO("Not yet implemented")
+            //state.anchorPosition
+            val page = when (loadType) {
+                LoadType.REFRESH -> null
+                LoadType.PREPEND -> {
+                    return  MediatorResult.Success(endOfPaginationReached = true)
+                }
+                LoadType.APPEND -> {
+                    NEWS_DATA_STARTING_PAGE_INDEX
+                }
+            }
+            try{
+                val apiResponse = apiService.getNewsHeadLines(page ?: NEWS_DATA_STARTING_PAGE_INDEX ,country, category, query)
+                val result = NewsMapper().mapListToDomain(apiResponse.results)
+                cache.storeNewsList(result)
+                return MediatorResult.Success(apiResponse.nextPage == null)
+            }catch (exception: IOException){
+                return MediatorResult.Error(exception)
+            }catch (exception: HttpException) {
+                return MediatorResult.Error(exception)
+            }
         }
 
         override suspend fun initialize(): InitializeAction {

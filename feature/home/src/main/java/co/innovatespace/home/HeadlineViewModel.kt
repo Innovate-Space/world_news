@@ -14,9 +14,15 @@ import javax.inject.Inject
 class HeadlineViewModel @Inject constructor(private val getNews: GetNews, private val dispatchProvider: DispatchersProvider, private val savedStateHandle: SavedStateHandle) : ViewModel() {
 
     lateinit var pagingDataFlow : Flow<PagingData<UINews>>
+
     init {
         println("I executed")
         val result = getNews()
         println(result)
+    }
+
+
+    private fun searchRepo(queryString: String): Flow<PagingData<UINews>> {
+        TODO("I dey come normally")
     }
 }

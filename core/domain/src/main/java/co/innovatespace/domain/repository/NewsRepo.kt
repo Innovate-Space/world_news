@@ -1,10 +1,11 @@
 package co.innovatespace.domain.repository
 
 import androidx.paging.Pager
-import co.innovatespace.domain.model.News
+import androidx.paging.PagingData
 import co.innovatespace.domain.model.NewsInt
+import kotlinx.coroutines.flow.Flow
 
 interface NewsRepo {
-     fun getNews(country: String = "ng", q: String? = null, category: List<String>?): Pager<Int,NewsInt>
+     fun getNews(country: String = "ng", q: String? = null, category: List<String>?): Flow<PagingData<NewsInt>>
      fun getFavoriteNews(): Pager<Int,NewsInt>
 }
