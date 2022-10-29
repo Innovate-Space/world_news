@@ -6,6 +6,7 @@ import co.innovatespace.data.cache.Cache
 import co.innovatespace.data.cache.RoomCache
 import co.innovatespace.data.cache.RoomDbEngine
 import co.innovatespace.data.cache.dao.CategoryDao
+import co.innovatespace.data.cache.dao.KeyDao
 import co.innovatespace.data.cache.dao.NewsDao
 import co.innovatespace.data.cache.dao.SourceDao
 import dagger.Binds
@@ -38,5 +39,8 @@ abstract class CacheModule {
 
         @Provides
         fun provideSourceDao(roomDatabaseEngine: RoomDbEngine): SourceDao = roomDatabaseEngine.sourceDao()
+
+        @Provides
+        fun provideKeyDao(roomDatabaseEngine: RoomDbEngine): KeyDao = roomDatabaseEngine.keyDao()
     }
 }
