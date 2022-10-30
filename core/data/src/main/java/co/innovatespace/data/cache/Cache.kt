@@ -11,7 +11,7 @@ interface Cache {
     suspend fun storeNewsList(newsList : List<CacheNews>)
     suspend fun storeCategoryList(categories : List<CacheCategory>)
     suspend fun storeSources(sources : List<Source>)
-    fun selectAllSources(): PagingSource<Int, Source>
+    fun selectAllSources(q: String): PagingSource<Int, Source>
     suspend fun deleteAllSources()
     suspend fun deleteAll()
     fun selectAllNews(): PagingSource<Int, NewsInt>

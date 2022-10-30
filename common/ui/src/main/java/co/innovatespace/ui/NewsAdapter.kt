@@ -12,7 +12,7 @@ class NewsAdapter: PagingDataAdapter<UINews, NewsAdapter.NewsViewHolder>(ITEM_CO
 
     inner class NewsViewHolder(private val binding: NewsItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(item: UINews?) {
-            binding.source.text = item?.title
+            binding.source.text = item?.description
             binding.date.text = item?.pubDate
             binding.newsThumbnail.setImage(item?.image.orEmpty())
             binding.headline.text = item?.title

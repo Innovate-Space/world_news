@@ -54,17 +54,6 @@ class SourceFragment : Fragment() {
 
 
 
-    private fun observeViewStateUpdates(adapter: SourceAdapter) {
-        viewLifecycleOwner.lifecycleScope.launch{
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.pagingDataFlow.collectLatest{
-                    adapter.submitData(it)
-                }
-            }
-
-        }
-    }
-
     private fun updateScreenState(state: SourceViewState) {
 
     }

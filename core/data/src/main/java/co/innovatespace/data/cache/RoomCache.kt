@@ -23,7 +23,7 @@ class RoomCache @Inject constructor(
     override suspend fun storeCategoryList(categories: List<CacheCategory>)  = categoryDao.insert(categories)
 
     override suspend fun storeSources(sources: List<Source>) = sourceDao.insert(sources)
-    override fun selectAllSources(): PagingSource<Int, Source>  = sourceDao.selectAll()
+    override fun selectAllSources(q: String): PagingSource<Int, Source>  = sourceDao.selectAll(q)
     override suspend fun deleteAllSources() = sourceDao.clearAll()
 
     override suspend fun deleteAll()  = newsDao.clearAll()

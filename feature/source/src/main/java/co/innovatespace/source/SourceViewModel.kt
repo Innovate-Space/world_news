@@ -18,20 +18,20 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SourceViewModel @Inject constructor(private val getSource: GetSources, private val dispatchProvider: DispatchersProvider, private val savedStateHandle: SavedStateHandle) : ViewModel() {
-    val pagingDataFlow : Flow<PagingData<UISource>>
+   // val pagingDataFlow : Flow<PagingData<UISource>>
 
-    init {
-        pagingDataFlow = getSource().map { pagingData -> pagingData.map {  UISource(
-            id = it.id,
-            name = it.name,
-            description = it.description,
-            url = it.url,
-            category = it.category
-        )  } }.flowOn(dispatchProvider.default()).cachedIn(viewModelScope)
-    }
-
-
-    private fun searchRepo(queryString: String): Flow<PagingData<UINews>> {
-        TODO("I dey come normally")
-    }
+//    init {
+//        pagingDataFlow = getSource().map { pagingData -> pagingData.map {  UISource(
+//            id = it.id,
+//            name = it.name,
+//            description = it.description,
+//            url = it.url,
+//            category = it.category
+//        )  } }.flowOn(dispatchProvider.default()).cachedIn(viewModelScope)
+//    }
+//
+//
+//    private fun searchRepo(queryString: String): Flow<PagingData<UINews>> {
+//        TODO("I dey come normally")
+//    }
 }

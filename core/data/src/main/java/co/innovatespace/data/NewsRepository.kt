@@ -31,11 +31,14 @@ class NewsRepository @Inject constructor(private val apiService: ApiService, pri
     }
 
     override fun getSources(q: String): Flow<PagingData<Source>> {
+        println("I am the param")
+        println("I am the param"+ q)
+        println("-------------I am the param")
         return  Pager(
-            config = PagingConfig(pageSize = 100, enablePlaceholders = false),
-            remoteMediator = SourceMediator(cache = cache, apiService = apiService)
+            config = PagingConfig(pageSize = 15, enablePlaceholders = false),
+            //remoteMediator = SourceMediator(cache = cache, apiService = apiService)
         ){
-            cache.selectAllSources()
+            cache.selectAllSources(q)
         }.flow
     }
 }

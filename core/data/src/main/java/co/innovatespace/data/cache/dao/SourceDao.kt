@@ -17,6 +17,6 @@ interface SourceDao {
     @Query("DELETE FROM source")
     suspend fun clearAll()
 
-    @Query("SELECT * FROM source")
-    fun selectAll(): PagingSource<Int, Source>
+    @Query("""SELECT * FROM source WHERE category LIKE '%' || :q || '%' """)
+    fun selectAll(q: String): PagingSource<Int, Source>
 }

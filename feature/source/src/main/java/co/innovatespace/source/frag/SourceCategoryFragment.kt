@@ -19,16 +19,16 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-private const val ARG_OBJECT = "object"
+const val ARG_OBJECT = "object"
 
 @AndroidEntryPoint
 class SourceCategoryFragment : Fragment() {
 
     companion object {
-        fun newInstance(data: Int): Fragment {
+        fun newInstance(data: String): Fragment {
             val instance = SourceCategoryFragment()
             instance.arguments = Bundle().apply {
-                putInt(ARG_OBJECT, data)
+                putString(ARG_OBJECT, data)
             }
             return instance
         }
@@ -52,9 +52,6 @@ class SourceCategoryFragment : Fragment() {
         binding.recyclerSource.apply {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(false)
-            isNestedScrollingEnabled = false
-
         }
     }
 
