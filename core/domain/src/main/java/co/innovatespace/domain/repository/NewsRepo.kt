@@ -10,4 +10,5 @@ interface NewsRepo {
      fun getNews(country: String = "ng", q: String? = null, category: List<String>?): Flow<PagingData<NewsInt>>
      fun getFavoriteNews(): Pager<Int,NewsInt>
      fun getSources(q: String): Flow<PagingData<Source>>
+     suspend fun fetchSources()
 }

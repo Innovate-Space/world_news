@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -37,7 +38,12 @@ class SourceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupUI()
         setupPager()
+    }
+
+    private fun setupUI() {
+        observeViewStateUpdates()
     }
 
     private fun setupPager(){
@@ -52,7 +58,24 @@ class SourceFragment : Fragment() {
         }.attach()
     }
 
+    private fun observeViewStateUpdates() {
+        viewLifecycleOwner.lifecycleScope.launch{
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.viewState.collectLatest{
+                    renderIt(it)
+                }
+            }
 
+        }
+    }
+
+    private fun renderIt(state: SourceViewState) {
+        with(binding){
+            progressIndicator.isVisible = state.isLoading
+            tab.isVisible = !state.isLoading
+            swipeRefresh.isVisible = !state.isLoading
+        }
+    }
 
     private fun updateScreenState(state: SourceViewState) {
 

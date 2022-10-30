@@ -1,17 +1,18 @@
 package co.innovatespace.data
 
-import androidx.paging.ExperimentalPagingApi
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
+import androidx.paging.*
 import co.innovatespace.data.api.ApiService
+import co.innovatespace.data.api.model.mapper.SourceMapper
 import co.innovatespace.data.cache.Cache
 import co.innovatespace.data.mediator.NewsMediator
-import co.innovatespace.data.mediator.SourceMediator
+import co.innovatespace.domain.model.NetworkUnavailableException
 import co.innovatespace.domain.model.NewsInt
 import co.innovatespace.domain.model.Source
+import co.innovatespace.domain.model.throwAppropriateError
 import co.innovatespace.domain.repository.NewsRepo
 import kotlinx.coroutines.flow.Flow
+import retrofit2.HttpException
+import java.io.IOException
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
@@ -31,14 +32,24 @@ class NewsRepository @Inject constructor(private val apiService: ApiService, pri
     }
 
     override fun getSources(q: String): Flow<PagingData<Source>> {
-        println("I am the param")
-        println("I am the param"+ q)
-        println("-------------I am the param")
         return  Pager(
             config = PagingConfig(pageSize = 15, enablePlaceholders = false),
             //remoteMediator = SourceMediator(cache = cache, apiService = apiService)
         ){
             cache.selectAllSources(q)
         }.flow
+    }
+
+    override suspend fun fetchSources() {
+        try{
+            val apiResponse = apiService.getSources()
+            val result = SourceMapper().mapListToDomain(apiResponse.results)
+            cache.deleteAllSources()
+            cache.storeSources(result)
+        }catch (exception: IOException){
+            throw NetworkUnavailableException(exception.message ?: "Request Failed")
+        }catch (exception: HttpException) {
+            throwAppropriateError(exception.code(), exception.message())
+        }
     }
 }
