@@ -48,8 +48,9 @@ class SourceFragment : Fragment() {
 
         binding.recyclerSource.apply {
             adapter = newsAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(false)
+            isNestedScrollingEnabled = false
 
         }
     }
@@ -71,6 +72,11 @@ class SourceFragment : Fragment() {
 
     private fun handleFailure(failure: Event<Throwable>?) {
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 

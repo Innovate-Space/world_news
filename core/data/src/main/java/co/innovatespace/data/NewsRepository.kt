@@ -19,7 +19,7 @@ class NewsRepository @Inject constructor(private val apiService: ApiService, pri
 
     override fun getNews(country: String, q: String?, category: List<String>?): Flow<PagingData<NewsInt>> {
         return Pager(
-            config = PagingConfig(pageSize = 50),
+            config = PagingConfig(pageSize = 50, enablePlaceholders = false),
             remoteMediator = NewsMediator(cache = cache, apiService = apiService, query = q, country = country, category = category?.joinToString( ",")   )
         ){
             cache.selectAllNews()
@@ -32,7 +32,7 @@ class NewsRepository @Inject constructor(private val apiService: ApiService, pri
 
     override fun getSources(q: String): Flow<PagingData<Source>> {
         return  Pager(
-            config = PagingConfig(pageSize = 100),
+            config = PagingConfig(pageSize = 100, enablePlaceholders = false),
             remoteMediator = SourceMediator(cache = cache, apiService = apiService)
         ){
             cache.selectAllSources()

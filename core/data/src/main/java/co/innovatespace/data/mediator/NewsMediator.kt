@@ -51,11 +51,11 @@ class NewsMediator  constructor(val apiService: ApiService,val cache: Cache , va
 //                // from the network.
 //                InitializeAction.SKIP_INITIAL_REFRESH
 //            } else {
-//                // Need to refresh cached data from network; returning
-//                // LAUNCH_INITIAL_REFRESH here will also block RemoteMediator's
-//                // APPEND and PREPEND from running until REFRESH succeeds.
-//                InitializeAction.LAUNCH_INITIAL_REFRESH
-//            }
-            return InitializeAction.LAUNCH_INITIAL_REFRESH
+                // Need to refresh cached data from network; returning
+                // LAUNCH_INITIAL_REFRESH here will also block RemoteMediator's
+                // APPEND and PREPEND from running until REFRESH succeeds.
+                //InitializeAction.LAUNCH_INITIAL_REFRESH
+           // }
+           return InitializeAction.LAUNCH_INITIAL_REFRESH
         }
 }
