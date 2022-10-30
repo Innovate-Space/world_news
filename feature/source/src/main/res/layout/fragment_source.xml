@@ -28,14 +28,6 @@
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-        <androidx.recyclerview.widget.RecyclerView
-            android:padding="16dp"
-            android:id="@+id/recycler_source"
-            android:layout_width="match_parent"
-            tools:listitem="@layout/news_source"
-            tools:itemCount="8"
-            android:layout_height="match_parent" />
-
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

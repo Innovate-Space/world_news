@@ -8,7 +8,7 @@ class SourcePagerAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int  = tabsText.size
 
     override fun createFragment(position: Int): Fragment {
-        return SourceCategoryFragment.newInstance()
+        return SourceCategoryFragment.newInstance(tabsText[position])
     }
 
 }

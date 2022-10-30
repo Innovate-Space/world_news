@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.LinearLayoutManager
 import co.innovatespace.source.databinding.FragmentSourceBinding
 import co.innovatespace.ui.SourceAdapter
 import co.innovatespace.utility.Event
@@ -18,7 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-//data class TabsData(val txtRes: Int )
 val tabsText = intArrayOf(R.string.business, R.string.entertainment, R.string.environment, R.string.food, R.string.health, R.string.politics, R.string.science, R.string.sports, R.string.technology, R.string.top, R.string.world )
 
 @AndroidEntryPoint
@@ -39,14 +37,7 @@ class SourceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupUI()
         setupPager()
-    }
-
-    private fun setupUI() {
-        val adapter = SourceAdapter()
-        setupRecyclerView(adapter)
-        observeViewStateUpdates(adapter)
     }
 
     private fun setupPager(){
@@ -61,16 +52,7 @@ class SourceFragment : Fragment() {
         }.attach()
     }
 
-    private fun setupRecyclerView(newsAdapter: SourceAdapter) {
 
-        binding.recyclerSource.apply {
-            adapter = newsAdapter
-            layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(false)
-            isNestedScrollingEnabled = false
-
-        }
-    }
 
     private fun observeViewStateUpdates(adapter: SourceAdapter) {
         viewLifecycleOwner.lifecycleScope.launch{
