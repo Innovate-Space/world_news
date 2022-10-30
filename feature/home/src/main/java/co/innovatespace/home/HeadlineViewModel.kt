@@ -11,6 +11,7 @@ import co.innovatespace.ui.presentation.UINews
 import co.innovatespace.utility.DispatchersProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -20,9 +21,6 @@ class HeadlineViewModel @Inject constructor(private val getNews: GetNews, privat
     val pagingDataFlow : Flow<PagingData<UINews>>
 
     init {
-        println("I executed")
-        val result = getNews()
-        println(result)
         pagingDataFlow = getNews().map { pagingData -> pagingData.map {  UINews(
             id = it.id,
             title = it.title,
@@ -32,7 +30,7 @@ class HeadlineViewModel @Inject constructor(private val getNews: GetNews, privat
             description = it.description,
             link = it.link,
             author = ""
-        )  } }.cachedIn(viewModelScope)
+        )  } }.flowOn(dispatchProvider.default()).cachedIn(viewModelScope)
     }
 
 

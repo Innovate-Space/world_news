@@ -4,14 +4,15 @@ import androidx.paging.PagingSource
 import co.innovatespace.data.cache.model.CacheCategory
 import co.innovatespace.data.cache.model.CacheNews
 import co.innovatespace.data.cache.model.CacheRemoteKeys
-import co.innovatespace.data.cache.model.CacheSource
-import co.innovatespace.domain.model.News
 import co.innovatespace.domain.model.NewsInt
+import co.innovatespace.domain.model.Source
 
 interface Cache {
     suspend fun storeNewsList(newsList : List<CacheNews>)
     suspend fun storeCategoryList(categories : List<CacheCategory>)
-    suspend fun storeSources(sources : List<CacheSource>)
+    suspend fun storeSources(sources : List<Source>)
+    fun selectAllSources(): PagingSource<Int, Source>
+    suspend fun deleteAllSources()
     suspend fun deleteAll()
     fun selectAllNews(): PagingSource<Int, NewsInt>
 

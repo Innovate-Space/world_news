@@ -8,9 +8,8 @@ import co.innovatespace.data.cache.dao.SourceDao
 import co.innovatespace.data.cache.model.CacheCategory
 import co.innovatespace.data.cache.model.CacheNews
 import co.innovatespace.data.cache.model.CacheRemoteKeys
-import co.innovatespace.data.cache.model.CacheSource
-import co.innovatespace.domain.model.News
 import co.innovatespace.domain.model.NewsInt
+import co.innovatespace.domain.model.Source
 import javax.inject.Inject
 
 class RoomCache @Inject constructor(
@@ -23,7 +22,10 @@ class RoomCache @Inject constructor(
 
     override suspend fun storeCategoryList(categories: List<CacheCategory>)  = categoryDao.insert(categories)
 
-    override suspend fun storeSources(sources: List<CacheSource>) = sourceDao.insert(sources)
+    override suspend fun storeSources(sources: List<Source>) = sourceDao.insert(sources)
+    override fun selectAllSources(): PagingSource<Int, Source>  = sourceDao.selectAll()
+    override suspend fun deleteAllSources() = sourceDao.clearAll()
+
     override suspend fun deleteAll()  = newsDao.clearAll()
 
     override fun selectAllNews(): PagingSource<Int, NewsInt> = newsDao.selectAll() as PagingSource<Int, NewsInt>

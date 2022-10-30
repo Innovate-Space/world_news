@@ -14,6 +14,7 @@ import co.innovatespace.home.databinding.FragmentHeadlineBinding
 import co.innovatespace.ui.NewsAdapter
 import co.innovatespace.utility.Event
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -56,7 +57,7 @@ class HeadlineFragment : Fragment() {
     private fun observeViewStateUpdates(adapter: NewsAdapter) {
         viewLifecycleOwner.lifecycleScope.launch{
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.pagingDataFlow.collect{
+                viewModel.pagingDataFlow.collectLatest{
                     adapter.submitData(it)
                 }
             }
