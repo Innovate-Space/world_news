@@ -40,6 +40,7 @@ buildscript {
         splashVersion = "1.0.0"
         viewPagerVersion = "viewpager2:1.0.0"
         dotIndicatorVersion = "4.2"
+        glideVersion = "4.11.0"
 
         threetenbpVersion = "1.4.4"
         leakcanaryVersion = "2.4"

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import co.innovatespace.ui.databinding.NewsItemBinding
 import co.innovatespace.ui.presentation.UINews
+import co.innovatespace.utility.setImage
 
 class NewsAdapter: PagingDataAdapter<UINews, NewsAdapter.NewsViewHolder>(ITEM_COMPARATOR) {
 
@@ -15,6 +16,8 @@ class NewsAdapter: PagingDataAdapter<UINews, NewsAdapter.NewsViewHolder>(ITEM_CO
         fun bind(item: UINews?) {
             binding.source.text = item?.title
             binding.date.text = item?.pubDate
+            binding.newsThumbnail.setImage(item?.image.orEmpty())
+            binding.headline.text = item?.title
         }
     }
 

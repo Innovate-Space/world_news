@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:id="@+id/headline"
             android:text="News Headline is what we are going to have on this section so be on the lookout"
             android:textAppearance="?attr/textAppearanceHeadline6" />
 

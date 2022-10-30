@@ -57,6 +57,10 @@ dependencies{
     // dot indicator
     implementation "com.tbuonomo:dotsindicator:$dotIndicatorVersion"
 
+    // UI
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleLiveDataKtx"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleViewModelKtx"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationFragmentKtx"
