@@ -17,24 +17,6 @@
         android:id="@+id/tab"
         app:tabMode="scrollable">
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Business"
-            />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sport"
-            />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Car"
-            />
-
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -42,6 +24,10 @@
         android:id="@+id/swipe_refresh"
         android:layout_below="@+id/tab"
         android:layout_height="match_parent">
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
         <androidx.recyclerview.widget.RecyclerView
             android:padding="16dp"
             android:id="@+id/recycler_source"
@@ -49,6 +35,8 @@
             tools:listitem="@layout/news_source"
             tools:itemCount="8"
             android:layout_height="match_parent" />
+
+
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </RelativeLayout>
