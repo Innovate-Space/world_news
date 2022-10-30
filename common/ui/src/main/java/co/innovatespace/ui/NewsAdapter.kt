@@ -4,11 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import co.innovatespace.ui.databinding.NewsItemBinding
 import co.innovatespace.ui.presentation.UINews
-import co.innovatespace.utility.setImage
 
 class NewsAdapter: PagingDataAdapter<UINews, NewsAdapter.NewsViewHolder>(ITEM_COMPARATOR) {
 
