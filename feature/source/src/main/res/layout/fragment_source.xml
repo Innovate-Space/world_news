@@ -38,4 +38,11 @@
         android:id="@+id/progress_indicator"
         android:indeterminate="true" />
 
+    <TextView
+        android:id="@+id/retry"
+        android:text="Retry Again"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
 </RelativeLayout>
