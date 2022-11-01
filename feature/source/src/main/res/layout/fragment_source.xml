@@ -38,19 +38,11 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
 
-<!--    <com.google.android.material.progressindicator.CircularProgressIndicator-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_centerInParent="true"-->
-<!--        android:id="@+id/progress_indicator"-->
-<!--        android:indeterminate="true" />-->
-
-    <TextView
-        android:id="@+id/retry"
-        android:text="Retry Again"
+    <ViewStub
+        android:id="@+id/error_box"
+        android:layout="@layout/error_layout"
         android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>

@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -71,9 +74,21 @@ class SourceFragment : Fragment() {
 
     private fun renderIt(state: SourceViewState) {
         with(binding){
+            val prob = state.failure?.getContentIfNotHandled()
             progressIndicator.isVisible = state.isLoading
-            tab.isVisible = !state.isLoading
-            swipeRefresh.isVisible = !state.isLoading
+            tab.isVisible = !state.isLoading && prob==null
+            swipeRefresh.isVisible = !state.isLoading && prob==null
+
+            if(prob != null){
+                //errorBox.isVisible = true
+               val v = if(errorBox.parent != null) errorBox.inflate() else  null;
+
+                val btn = v?.findViewById<Button>(co.innovatespace.ui.R.id.try_again)
+                val message = v?.findViewById<TextView>(co.innovatespace.ui.R.id.msg)
+                message?.text = prob.message
+               btn?.setOnClickListener { viewModel.fetchData() }
+            }
+
         }
     }
 

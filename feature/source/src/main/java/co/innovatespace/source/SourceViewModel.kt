@@ -29,7 +29,7 @@ class SourceViewModel @Inject constructor(private val fetchSources: FetchNetwork
         fetchData()
     }
 
-    private fun fetchData() {
+    fun fetchData() {
         val exceptionHandler = viewModelScope.createExceptionHandler{onFailure(it)}
         _viewState.value = viewState.value.copy(isLoading = true)
         viewModelScope.launch(exceptionHandler) {
