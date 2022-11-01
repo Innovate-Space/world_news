@@ -31,16 +31,24 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <com.google.android.material.progressindicator.CircularProgressIndicator
+    <ViewStub
+        android:id="@+id/progress_indicator"
+        android:layout="@layout/loading_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:id="@+id/progress_indicator"
-        android:indeterminate="true" />
+        android:layout_centerInParent="true" />
+
+<!--    <com.google.android.material.progressindicator.CircularProgressIndicator-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:id="@+id/progress_indicator"-->
+<!--        android:indeterminate="true" />-->
 
     <TextView
         android:id="@+id/retry"
         android:text="Retry Again"
+        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
