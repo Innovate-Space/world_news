@@ -83,7 +83,7 @@ class SourceFragment : Fragment() {
                 val v = if(errorBox.parent != null) errorBox.inflate() else  null;
                 val btn = v?.findViewById<Button>(co.innovatespace.ui.R.id.try_again)
                 val message = v?.findViewById<TextView>(co.innovatespace.ui.R.id.msg)
-                message?.text = prob.message
+                message?.text = prob?.message
                 btn?.setOnClickListener { viewModel.fetchData() }
             }
 
