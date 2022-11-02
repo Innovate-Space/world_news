@@ -31,7 +31,7 @@ class SourceViewModel @Inject constructor(private val fetchSources: FetchNetwork
 
     fun fetchData() {
         val exceptionHandler = viewModelScope.createExceptionHandler{onFailure(it)}
-        _viewState.value = viewState.value.copy(isLoading = true)
+        _viewState.value = viewState.value.copy(isLoading = true, hasError = false)
         viewModelScope.launch(exceptionHandler) {
             withContext(dispatchProvider.io()){
                 fetchSources()
@@ -42,6 +42,6 @@ class SourceViewModel @Inject constructor(private val fetchSources: FetchNetwork
 
     private fun onFailure(failure: Throwable) {
         //Feel free to traverse the error here and respond differently to different error types if you wish
-        _viewState.value = viewState.value.copy(isLoading = false, failure = Event(failure))
+        _viewState.value = viewState.value.copy(isLoading = false, failure = Event(failure), hasError = true)
     }
 }

@@ -79,14 +79,17 @@ class SourceFragment : Fragment() {
             tab.isVisible = !state.isLoading && prob==null
             swipeRefresh.isVisible = !state.isLoading && prob==null
 
-            if(prob != null){
-                //errorBox.isVisible = true
-               val v = if(errorBox.parent != null) errorBox.inflate() else  null;
-
+            if(state.hasError){
+                val v = if(errorBox.parent != null) errorBox.inflate() else  null;
                 val btn = v?.findViewById<Button>(co.innovatespace.ui.R.id.try_again)
                 val message = v?.findViewById<TextView>(co.innovatespace.ui.R.id.msg)
                 message?.text = prob.message
-               btn?.setOnClickListener { viewModel.fetchData() }
+                btn?.setOnClickListener { viewModel.fetchData() }
+            }
+
+            if(prob != null){
+                // consider showing an error snack bar here
+                // if you want to
             }
 
         }
