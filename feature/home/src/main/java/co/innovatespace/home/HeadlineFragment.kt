@@ -12,6 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.innovatespace.home.databinding.FragmentHeadlineBinding
 import co.innovatespace.ui.NewsAdapter
+import co.innovatespace.ui.NewsLoadingAdapter
 import co.innovatespace.utility.Event
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -47,7 +48,11 @@ class HeadlineFragment : Fragment() {
 
     private fun setupRecyclerView(newsAdapter: NewsAdapter) {
         binding.recyclerNewsList.apply {
-            adapter = newsAdapter
+
+            adapter = newsAdapter.withLoadStateHeaderAndFooter(
+                header = NewsLoadingAdapter{newsAdapter.retry()},
+                footer = NewsLoadingAdapter{newsAdapter.retry()},
+            )
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(false)
             isNestedScrollingEnabled = false
